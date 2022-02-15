@@ -1,0 +1,8 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/.idea.VContainerSample.iml
+/contentModel.xml
+/modules.xml
+/projectSettingsUpdater.xml
