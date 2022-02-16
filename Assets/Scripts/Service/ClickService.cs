@@ -18,12 +18,14 @@ namespace Sample.Service {
 		readonly UpgradeService _upgradeService;
 		readonly CoinService _coinService;
 		readonly IGameStateSaver _saver;
+		readonly IAnalyticsService _analytics;
 
-		public ClickService(ClickState state, UpgradeService upgradeService, CoinService coinService, IGameStateSaver saver) {
+		public ClickService(ClickState state, UpgradeService upgradeService, CoinService coinService, IGameStateSaver saver, IAnalyticsService analytics) {
 			_state = state;
 			_upgradeService = upgradeService;
 			_coinService = coinService;
 			_saver = saver;
+			_analytics = analytics;
 		}
 
 		public void Tick() =>
@@ -34,6 +36,7 @@ namespace Sample.Service {
 			_state.ClickCount++;
 			_coinService.Increase(ClickIncome);
 			_saver.SaveGameState();
+			_analytics.SendEvent($"Click_{_state.ClickCount}");
 		}
 	}
 }

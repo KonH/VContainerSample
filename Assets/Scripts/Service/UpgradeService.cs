@@ -10,11 +10,13 @@ namespace Sample.Service {
 		readonly UpgradeState _state;
 		readonly CoinService _coinService;
 		readonly IGameStateSaver _saver;
+		readonly IAnalyticsService _analytics;
 
-		public UpgradeService(UpgradeState state, CoinService coinService, IGameStateSaver saver) {
+		public UpgradeService(UpgradeState state, CoinService coinService, IGameStateSaver saver, IAnalyticsService analytics) {
 			_state = state;
 			_coinService = coinService;
 			_saver = saver;
+			_analytics = analytics;
 		}
 
 		public bool CanUpgrade() => _coinService.IsEnough(UpgradePrice);
@@ -23,6 +25,7 @@ namespace Sample.Service {
 			_coinService.Consume(UpgradePrice);
 			_state.UpgradeLevel++;
 			_saver.SaveGameState();
+			_analytics.SendEvent($"Upgrade_{_state.UpgradeLevel}");
 		}
 	}
 }

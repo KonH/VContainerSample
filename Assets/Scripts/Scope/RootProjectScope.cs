@@ -1,6 +1,7 @@
 using System;
 using Sample.Service;
 using Sample.State;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -21,6 +22,11 @@ namespace Sample.Scope {
 			RegisterGameStateShortcut(builder, gs => gs.ClickState);
 			RegisterGameStateShortcut(builder, gs => gs.UpgradeState);
 			RegisterGameStateShortcut(builder, gs => gs.CoinState);
+			if ( Application.isEditor ) {
+				builder.Register<IAnalyticsService, EditorAnalytics>(Lifetime.Singleton);
+			} else {
+				builder.Register<IAnalyticsService, RuntimeAnalytics>(Lifetime.Singleton);
+			}
 		}
 
 		void RegisterGameStateShortcut<T>(IContainerBuilder builder, Func<GameState, T> container) where T : class {
