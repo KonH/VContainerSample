@@ -12,10 +12,8 @@ namespace Sample.Scope {
 			builder.Register<GameStateSerializer>(Lifetime.Singleton)
 				.AsSelf() // To load game state only
 				.AsImplementedInterfaces(); // To all other consumers
-			builder.Register<DebtService>(Lifetime.Singleton)
-				.AsSelf();
-			builder.Register<CoinService>(Lifetime.Singleton)
-				.AsSelf();
+			builder.Register<DebtService>(Lifetime.Singleton);
+			builder.Register<CoinService>(Lifetime.Singleton);
 			builder.Register(resolver => {
 				var serializer = resolver.Resolve<GameStateSerializer>();
 				return serializer.LoadGameState();

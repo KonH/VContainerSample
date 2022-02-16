@@ -15,8 +15,7 @@ namespace Sample.Scope {
 			builder.Register<ClickService>(Lifetime.Scoped)
 				.AsSelf()
 				.As<ITickable>();
-			builder.Register<UpgradeService>(Lifetime.Scoped)
-				.AsSelf();
+			builder.Register<UpgradeService>(Lifetime.Scoped);
 			builder.RegisterInstance(_upgradeWindow);
 			builder
 				.RegisterFactory<int, ClickEffectView>(resolver => {
