@@ -1,0 +1,21 @@
+{
+    "name": "Sample.Scope",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc",
+        "GUID:ef41715447bd043268de1d95700976e8",
+        "GUID:5fb61a72006b540fba09b40224cab40f",
+        "GUID:ed6c1d89bd913456bb582f404bb70106",
+        "GUID:45f27ad54a66a4b72a2e2b792402328b",
+        "GUID:27d8d069932794bd5ae78ed57aefa872"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
